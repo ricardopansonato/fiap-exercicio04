@@ -19,7 +19,7 @@ public class Aviao extends Thread {
 				voar();
 				aterrisar();
 			} catch (InterruptedException e) {
-				
+				e.printStackTrace();
 			}
 		}
 	}

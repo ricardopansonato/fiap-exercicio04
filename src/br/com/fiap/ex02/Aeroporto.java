@@ -19,15 +19,15 @@ public class Aeroporto extends Thread {
 				Thread.sleep(3000);
 				alterarEstadoPista();
 			} catch (InterruptedException e) {
-
+				e.printStackTrace();
 			}
 		}
 	}
 	
 	public void alterarEstadoPista() {
 		this.aguardarPistaDisponivel = !aguardarPistaDisponivel;
+		System.out.println("********************************");
 		System.out.println(!aguardarPistaDisponivel ? nomeAeroporto + " permite decolar/aterrisar" : nomeAeroporto + " não permite decolar/aterrisar");
-		avioes.forEach(a -> { System.out.println(a.getVoo() + " - " + a.getState()); });
 		if (!aguardarPistaDisponivel) {
 			avioes.forEach(a -> {
 				synchronized (a) {
@@ -35,6 +35,7 @@ public class Aeroporto extends Thread {
 				}
 			});
 		}
+		avioes.forEach(a -> { System.out.println(a.getVoo() + " - " + a.getState()); });
 	}
 	
 	public boolean aguardarPistaDisponivel() {
